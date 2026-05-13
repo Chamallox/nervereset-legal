@@ -68,11 +68,10 @@
 <p>
 This Privacy Policy describes how the NerveReset iOS application
 (“NerveReset”, “the app”, “we”, “us”) handles your information.
-NerveReset keeps the content you create (quiz answers, mood ratings,
-exercise history) on your device. To run subscriptions, understand
-how the app is used, and measure marketing performance, a small set
-of anonymous events is sent to three trusted vendors — RevenueCat,
-PostHog, and AppsFlyer — detailed in Section 4 below.
+The content you create in the app — quiz answers, mood ratings,
+exercise history, preferences — is stored only on your device.
+A small amount of anonymous data is processed by three trusted
+service providers, detailed in Section 4 below.
 </p>
 
 <h2>1. Summary</h2>
@@ -128,86 +127,46 @@ PostHog, and AppsFlyer — detailed in Section 4 below.
       Section 4.</li>
 </ul>
 
-<h2>4. Vendors that receive a small amount of data</h2>
+<h2>4. Third-party processors</h2>
 <p>
-  To operate subscriptions, understand which features matter, and measure
-  which marketing channels are working, NerveReset integrates three
-  third-party SDKs. None of them receive your name, email, location,
-  contacts, photos, or any health information. The data each one receives
-  is listed below.
+  To operate the app, NerveReset uses three trusted third-party
+  service providers. None of them receive your name, email, location,
+  contacts, photos, or any health information. Each is bound by its
+  own privacy policy, linked below.
 </p>
 
 <h3>4.1 RevenueCat</h3>
 <p>
-  RevenueCat validates your subscription receipt on its servers — this is
-  what protects the app from common subscription-fraud techniques (clock
-  manipulation, receipt replay). When you subscribe, restore a purchase,
-  cancel, or your subscription renews, RevenueCat receives:
-</p>
-<ul>
-  <li>An anonymous identifier RevenueCat generates per app install (no
-      Apple ID, no email, no name).</li>
-  <li>The product identifier you purchased (e.g. <code>com.nervereset.annual</code>).</li>
-  <li>The purchase / renewal timestamp and currency provided by Apple.</li>
-  <li>Country code as reported by Apple in the App Store receipt.</li>
-</ul>
-<p>
-  RevenueCat’s privacy practices are at
+  RevenueCat verifies your subscription on its secure infrastructure
+  so the app can unlock paid features. RevenueCat receives an
+  anonymous per-install identifier and your subscription events from
+  Apple (purchase, renewal, cancellation). RevenueCat does not
+  receive your name, email, or other personal information. See
   <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">revenuecat.com/privacy</a>.
 </p>
 
 <h3>4.2 PostHog</h3>
 <p>
-  PostHog is our product-analytics layer — we use it to know which screens
-  people actually use, where they drop off, and which features matter. It
-  receives:
-</p>
-<ul>
-  <li>An anonymous identifier PostHog generates per app install (a random
-      UUID stored locally on your device — not your Apple ID, not your
-      email).</li>
-  <li>A small set of explicitly-instrumented event names (such as
-      <code>paywall_viewed</code>, <code>exercise_completed</code>,
-      <code>checkin_completed</code>). Event names are listed in the
-      app source code at
-      <a href="https://github.com/Chamallox/Nervereset" target="_blank" rel="noopener">github.com/Chamallox/Nervereset</a>
-      under <code>AnalyticsService.swift</code>.</li>
-  <li>Basic device context (model, OS version, app version) that Apple
-      already exposes to any app — never the IDFA.</li>
-</ul>
-<p>
-  Events are sent to PostHog’s EU Cloud region for data-residency
-  reasons. PostHog’s privacy practices are at
+  PostHog receives anonymous usage events that help us understand how
+  the app is used and improve it. Events are tagged with a random
+  per-install identifier and basic device context (model, OS version,
+  app version). PostHog does not receive your name, email, or
+  Advertising Identifier. Events are processed in PostHog’s EU
+  region. See
   <a href="https://posthog.com/privacy" target="_blank" rel="noopener">posthog.com/privacy</a>.
 </p>
 
 <h3>4.3 AppsFlyer</h3>
 <p>
-  AppsFlyer measures which marketing channel led to your install — so
-  we can know whether our TikTok / Instagram / search ads are working.
-  Unlike PostHog and RevenueCat, AppsFlyer DOES use Apple’s IDFA
-  identifier when, and only when, you grant App Tracking Transparency
-  permission. If you do not grant it (or if you have not been asked
-  yet), AppsFlyer falls back to Apple’s privacy-preserving SKAdNetwork
-  framework — which sends Apple-aggregated, non-individually-attributable
-  install data.
-</p>
-<p>
-  When you do grant ATT permission, AppsFlyer receives:
-</p>
-<ul>
-  <li>Your IDFA (an identifier you can reset at any time in
-      <code>Settings → Privacy &amp; Security → Tracking</code>).</li>
-  <li>The marketing channel and campaign that referred your install
-      (e.g. “TikTok / spring2026 / video-3”).</li>
-  <li>Purchase events (so we can compute ROAS) — without your
-      identity attached.</li>
-</ul>
-<p>
-  You can revoke ATT permission at any time in iOS Settings →
-  Privacy &amp; Security → Tracking → NerveReset → off. Doing so does
-  not affect any other feature of the app. AppsFlyer’s privacy
-  practices are at
+  AppsFlyer measures which channel referred your app install. If you
+  grant App Tracking Transparency permission, AppsFlyer receives the
+  Advertising Identifier (IDFA) — which you can reset or revoke at
+  any time in <code>Settings → Privacy &amp; Security → Tracking</code>.
+  If you do not grant permission, AppsFlyer uses Apple’s
+  privacy-preserving SKAdNetwork framework instead, which provides
+  only aggregated, non-individually-attributable install data.
+  AppsFlyer does not receive your name, email, or other personal
+  information. See
   <a href="https://www.appsflyer.com/privacy-policy/" target="_blank" rel="noopener">appsflyer.com/privacy-policy</a>.
 </p>
 
