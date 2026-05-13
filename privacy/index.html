@@ -63,22 +63,32 @@
 <main>
 
 <h1>Privacy Policy</h1>
-<p class="meta">NerveReset · Effective date: April 22, 2026</p>
+<p class="meta">NerveReset · Effective date: May 13, 2026</p>
 
 <p>
 This Privacy Policy describes how the NerveReset iOS application
 (“NerveReset”, “the app”, “we”, “us”) handles your information.
-NerveReset is designed to be a local-only app: your data stays on your
-device.
+NerveReset keeps the content you create (quiz answers, mood ratings,
+exercise history) on your device. To run subscriptions, understand
+how the app is used, and measure marketing performance, a small set
+of anonymous events is sent to three trusted vendors — RevenueCat,
+PostHog, and AppsFlyer — detailed in Section 4 below.
 </p>
 
 <h2>1. Summary</h2>
 <ul>
-  <li>NerveReset does <strong>not</strong> collect, transmit, or sell personal data.</li>
-  <li>NerveReset does <strong>not</strong> use analytics, advertising, or third-party tracking SDKs.</li>
-  <li>All information you enter in the app (quiz answers, mood ratings, session
-      history, streak, display name, preferences) is stored <strong>only on your
-      device</strong> using Apple’s SwiftData framework.</li>
+  <li>The content you create in the app — quiz answers, mood ratings,
+      exercise session history, streak, display name, preferences — is stored
+      <strong>only on your device</strong> using Apple’s SwiftData framework
+      and never transmitted to us.</li>
+  <li>To run subscriptions, measure how features are used, and measure which
+      marketing channels brought you to NerveReset, the app sends a small set
+      of anonymous events to three trusted vendors: <strong>RevenueCat</strong>
+      (subscription validation), <strong>PostHog</strong> (product analytics),
+      and <strong>AppsFlyer</strong> (mobile attribution). The exact data each
+      receives is detailed in Section 4.</li>
+  <li>We do <strong>not</strong> collect your name, email, location, contacts,
+      photos, health data, or other personally identifying information.</li>
   <li>Subscription payments are processed by Apple through the App Store using
       StoreKit. We do not see your payment details.</li>
 </ul>
@@ -109,15 +119,99 @@ device.
 </p>
 <ul>
   <li>Your name, email address, phone number, or physical address (unless you
-      voluntarily contact us by email — see Section 8).</li>
+      voluntarily contact us by email — see Section 9).</li>
   <li>Your precise or approximate location.</li>
   <li>Your contacts, photos, microphone, camera, health data, or motion data.</li>
-  <li>Advertising identifiers (IDFA). The app does not present the App Tracking
-      Transparency prompt because it does not track.</li>
-  <li>Analytics, crash reports, device fingerprints, or behavioural data.</li>
+  <li>The content you create inside the app (your quiz answers, mood ratings,
+      exercise notes, etc.) — that data stays on your device, encrypted at
+      rest by iOS, and is never transmitted to us or to the vendors listed in
+      Section 4.</li>
 </ul>
 
-<h2>4. Subscriptions and payments</h2>
+<h2>4. Vendors that receive a small amount of data</h2>
+<p>
+  To operate subscriptions, understand which features matter, and measure
+  which marketing channels are working, NerveReset integrates three
+  third-party SDKs. None of them receive your name, email, location,
+  contacts, photos, or any health information. The data each one receives
+  is listed below.
+</p>
+
+<h3>4.1 RevenueCat</h3>
+<p>
+  RevenueCat validates your subscription receipt on its servers — this is
+  what protects the app from common subscription-fraud techniques (clock
+  manipulation, receipt replay). When you subscribe, restore a purchase,
+  cancel, or your subscription renews, RevenueCat receives:
+</p>
+<ul>
+  <li>An anonymous identifier RevenueCat generates per app install (no
+      Apple ID, no email, no name).</li>
+  <li>The product identifier you purchased (e.g. <code>com.nervereset.annual</code>).</li>
+  <li>The purchase / renewal timestamp and currency provided by Apple.</li>
+  <li>Country code as reported by Apple in the App Store receipt.</li>
+</ul>
+<p>
+  RevenueCat’s privacy practices are at
+  <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">revenuecat.com/privacy</a>.
+</p>
+
+<h3>4.2 PostHog</h3>
+<p>
+  PostHog is our product-analytics layer — we use it to know which screens
+  people actually use, where they drop off, and which features matter. It
+  receives:
+</p>
+<ul>
+  <li>An anonymous identifier PostHog generates per app install (a random
+      UUID stored locally on your device — not your Apple ID, not your
+      email).</li>
+  <li>A small set of explicitly-instrumented event names (such as
+      <code>paywall_viewed</code>, <code>exercise_completed</code>,
+      <code>checkin_completed</code>). Event names are listed in the
+      app source code at
+      <a href="https://github.com/Chamallox/Nervereset" target="_blank" rel="noopener">github.com/Chamallox/Nervereset</a>
+      under <code>AnalyticsService.swift</code>.</li>
+  <li>Basic device context (model, OS version, app version) that Apple
+      already exposes to any app — never the IDFA.</li>
+</ul>
+<p>
+  Events are sent to PostHog’s EU Cloud region for data-residency
+  reasons. PostHog’s privacy practices are at
+  <a href="https://posthog.com/privacy" target="_blank" rel="noopener">posthog.com/privacy</a>.
+</p>
+
+<h3>4.3 AppsFlyer</h3>
+<p>
+  AppsFlyer measures which marketing channel led to your install — so
+  we can know whether our TikTok / Instagram / search ads are working.
+  Unlike PostHog and RevenueCat, AppsFlyer DOES use Apple’s IDFA
+  identifier when, and only when, you grant App Tracking Transparency
+  permission. If you do not grant it (or if you have not been asked
+  yet), AppsFlyer falls back to Apple’s privacy-preserving SKAdNetwork
+  framework — which sends Apple-aggregated, non-individually-attributable
+  install data.
+</p>
+<p>
+  When you do grant ATT permission, AppsFlyer receives:
+</p>
+<ul>
+  <li>Your IDFA (an identifier you can reset at any time in
+      <code>Settings → Privacy &amp; Security → Tracking</code>).</li>
+  <li>The marketing channel and campaign that referred your install
+      (e.g. “TikTok / spring2026 / video-3”).</li>
+  <li>Purchase events (so we can compute ROAS) — without your
+      identity attached.</li>
+</ul>
+<p>
+  You can revoke ATT permission at any time in iOS Settings →
+  Privacy &amp; Security → Tracking → NerveReset → off. Doing so does
+  not affect any other feature of the app. AppsFlyer’s privacy
+  practices are at
+  <a href="https://www.appsflyer.com/privacy-policy/" target="_blank" rel="noopener">appsflyer.com/privacy-policy</a>.
+</p>
+
+<h2>5. Subscriptions and payments</h2>
 <p>
   Subscriptions are processed by Apple through the App Store using the
   StoreKit framework. Apple handles your payment information, billing, and
@@ -126,41 +220,46 @@ device.
 </p>
 <p>
   The app receives from Apple only an anonymous entitlement signal indicating
-  whether an active subscription exists. This signal is kept on your device to
-  unlock premium features. We do not receive your Apple ID, name, email, or
-  payment method.
+  whether an active subscription exists. We do not receive your Apple ID,
+  name, email, or payment method.
 </p>
 <p>
   You can manage or cancel your subscription at any time in
   <code>Settings → [your name] → Subscriptions</code> on your Apple device.
 </p>
 
-<h2>5. System APIs used</h2>
+<h2>6. System APIs used</h2>
 <p>
   In line with Apple’s privacy manifest requirements, NerveReset declares the
   following in its bundled <code>PrivacyInfo.xcprivacy</code> file:
 </p>
 <ul>
-  <li><strong>Tracking:</strong> disabled.</li>
-  <li><strong>Tracking domains:</strong> none.</li>
-  <li><strong>Collected data types:</strong> none.</li>
+  <li><strong>Tracking:</strong> enabled (specifically: the AppsFlyer SDK
+      may read the IDFA when you grant ATT permission — see Section 4.3).</li>
+  <li><strong>Tracking domains:</strong> AppsFlyer ingestion endpoints
+      (<code>app.appsflyer.com</code>, <code>events.appsflyer.com</code>,
+      <code>register.appsflyer.com</code>, <code>conversions.appsflyer.com</code>,
+      <code>onelink.me</code>).</li>
+  <li><strong>Collected data types:</strong> Purchase History (via
+      RevenueCat), Product Interaction (via PostHog), Device ID (via
+      AppsFlyer, only when ATT-granted). All declared as
+      not-linked-to-identity.</li>
   <li><strong>UserDefaults API access:</strong> declared with reason
       <code>CA92.1</code>, i.e. to read and write the app’s own settings
-      (for example the sound-cue toggle). No other system APIs requiring a
-      reason are used.</li>
+      (for example the sound-cue toggle).</li>
 </ul>
 
-<h2>6. Children’s privacy</h2>
+<h2>7. Children’s privacy</h2>
 <p>
   NerveReset is not directed at children under 13. The app is rated 12+ on the
   App Store. Because no personal data is collected or transmitted, the app
   does not knowingly collect information from children. If you are a parent or
   guardian and believe your child has provided information to us, please
-  contact us at the address in Section 8. As the app stores nothing off-device,
+  contact us at the address in Section 9. As the app stores nothing off-device,
   simply deleting the app removes any information that may have been entered.
 </p>
 
-<h2>7. Your rights</h2>
+<h2>8. Your rights</h2>
 <p>
   Depending on your jurisdiction, you may have the right to access, correct,
   export, or delete personal data held about you (for example under the EU
@@ -176,18 +275,18 @@ device.
 </ul>
 <p>
   If you still wish to submit a formal request, you can write to the address
-  in Section 8. Because we do not store a copy of your data, our response will
+  in Section 9. Because we do not store a copy of your data, our response will
   typically confirm that we hold no information about you.
 </p>
 
-<h2>8. Contact</h2>
+<h2>9. Contact</h2>
 <p>
   Questions about this policy or your privacy in the app can be sent to:
   <br>
   <a href="mailto:francois@nomi.so">francois@nomi.so</a>
 </p>
 
-<h2>9. Changes to this policy</h2>
+<h2>10. Changes to this policy</h2>
 <p>
   We may update this Privacy Policy to reflect changes in the app, in
   applicable law, or in our practices. The “Effective date” at the top of this
@@ -197,7 +296,7 @@ device.
   updated policy.
 </p>
 
-<h2>10. Not medical advice</h2>
+<h2>11. Not medical advice</h2>
 <p>
   NerveReset is a general wellness and self-care tool. It is not a medical
   device and does not provide medical advice, diagnosis, or treatment.
